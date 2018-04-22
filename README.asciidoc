@@ -15,7 +15,10 @@ First, molecule documentation mentions that the only supported way to install it
 ----
 
 and it upgraded at least another module that were installed by rpm.
-This module was required by yum (the system package manager), but I really don't want to break my package manager. So this a NO GO! A virtualenv was not working either! libselinux-python is not available as a pip package, i.e. on pypi.org, so bringing it into that virtualenv would be a unpleasant hack. At this time I was already unpleased, so to say I experienced trouble, as foreseen.
+This module was required by yum (the system package manager), but I really don't want to break my package manager. So this a NO GO!
+
+A virtualenv was not working either! libselinux-python is not available as a pip package, i.e. on pypi.org, so bringing it into that virtualenv would be a unpleasant hack. At this time I was already unpleased, so to say I experienced trouble, as foreseen.
+
 So I'll try with docker and containers. Sadly, of course, this isn't easy too. Molecule uses docker containers to test ansible playbooks against. You need to be able to spawn containers from inside a container. Uh. This sounds like a hack too! And here it is...
 
 https://github.com/dpw/selinux-dockersock
