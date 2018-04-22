@@ -1,0 +1,10 @@
+Docker image for devoloping and testing ansible modules with molecules
+======================================================================
+
+bla
+
+TODO
+----
+
+github config for credentials
+github config for name and email
