@@ -1,0 +1,3 @@
+ansible==2.3.3.0
+molecule
+six>=1.10.0
