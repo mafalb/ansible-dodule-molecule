@@ -26,9 +26,15 @@ https://github.com/dpw/selinux-dockersock
 Sounds awful, so maybe better do it in a dedicated virtual machine, not on your main workstation.
 However, the good news, at last it seems to work...
 
+How to use
+----------
+
+todo...
+
 TODOs
 ----
 
 - github config for credentials
 - github config for name and email
 - set ANSIBLE_MOLECULE_DOCKER_BUILD_DIR environment variable in build container
+- git pull ansible modules to test
