@@ -1,7 +1,27 @@
-Docker image for devoloping and testing ansible modules with molecules
-======================================================================
+Docker image for testing ansible modules with molecule
+======================================================
 
-molecule http://molecule.readthedocs.io
+I quote from the molecule page +
+"Molecule is designed to aid in the development and testing of Ansible roles." +
+molecule http://molecule.readthedocs.io +
+
+So I thought that wanted to try that. It wasn't easy though.
+First, molecule documentation mentions that the only supported way to install it is by pip, i.e. outside of OS Package Manager like yum or apt, and what that means in my experience is trouble. Actually I tried a plain
+
+
+[source,bash]
+----
+# pip install molecule
+----
+
+and it upgraded at least another module that were installed by rpm.
+This module was required by yum (the system package manager), but I really don't want to break my package manager. So this a NO GO! A virtualenv was not working either! libselinux-python is not available as a pip package, i.e. on pypi.org, so bringing it into that virtualenv would be a unpleasant hack. At this time I was already unpleased, so to say I experienced trouble, as foreseen.
+So I'll try with docker and containers. Sadly, of course, this isn't easy too. Molecule uses docker containers to test ansible playbooks against. You need to be able to spawn containers from inside a container. Uh. This sounds like a hack too! And here it is...
+
+https://github.com/dpw/selinux-dockersock
+
+Sounds awful, so maybe better do it in a dedicated virtual machine, not on your main workstation.
+However, the good news, at last it seems to work...
 
 TODOs
 ----
