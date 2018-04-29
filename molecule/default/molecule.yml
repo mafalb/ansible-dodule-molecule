@@ -15,8 +15,6 @@ provisioner:
   config_options:
     defaults:
       hash_behaviour: merge
-#  env:
-#    ANSIBLE_MOLECULE_DOCKER_BUILD_DIR: /tmp/bla
   lint:
     name: ansible-lint
 scenario:
