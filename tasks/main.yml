@@ -1,22 +1,5 @@
 ---
 
-- name: create temp dir
-  tempfile:
-    suffix: .molecule
-    state: directory
-  register: _molecule_docker_build_dir
-  when: lookup('env', 'ANSIBLE_MOLECULE_DOCKER_BUILD_DIR') is not defined
-
-- name: ANSIBLE_MOLECULE_DOCKER_BUILD_DIR
-  debug: msg="{{ lookup('env', 'ANSIBLE_MOLECULE_DOCKER_BUILD_DIR')|default(_molecule_docker_build_dir.path) }}"
-  tags:
-    - debug
-
-- name: Dockerfile etc. is present
-  copy:
-    src: src/
-    dest: "{{ lookup('env', 'ANSIBLE_MOLECULE_DOCKER_BUILD_DIR')|default(_molecule_docker_build_dir.path) }}"
-
 - name: packages are installed
   package:
     name: "{{ item }}"
@@ -27,7 +10,7 @@
 
 - name: docker image is built
   docker_image:
-    path: "{{ lookup('env', 'ANSIBLE_MOLECULE_DOCKER_BUILD_DIR')|default(_molecule_docker_build_dir.path) }}"
+    path: src
     name: molecule
     tag: v2
     state: present
